@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "MiniProject"
+    }
+  },
+  "defaultProject": "MiniProject",
+  "cli": {
+    "analytics": false
+  }
 }
