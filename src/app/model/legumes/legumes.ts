@@ -4,4 +4,5 @@ export interface legumes {
   price: number;
   quantity: number;
   description: string;
+  image:File;
 }
