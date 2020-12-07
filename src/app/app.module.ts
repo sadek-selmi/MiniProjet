@@ -8,7 +8,7 @@ import { ListproduitsComponent } from './listproduits/listproduits.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DetailsComponent } from './details/details.component';
 import { ModidierproduitComponent } from './modidierproduit/modidierproduit.component';
 
@@ -22,12 +22,13 @@ import { ModidierproduitComponent } from './modidierproduit/modidierproduit.comp
     DetailsComponent,
     ModidierproduitComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
