@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MiniProject';
+  valInput: string;
+  valOutput: string;
+
+  ChangeValue(n: string){
+
+    this.valOutput = n;
+  }
 }

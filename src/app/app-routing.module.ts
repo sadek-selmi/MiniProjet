@@ -7,19 +7,20 @@ import {DetailsComponent} from "./details/details.component";
 import {LoginComponent} from "./login/login.component";
 import {ModidierproduitComponent} from "./modidierproduit/modidierproduit.component";
 import {RegisterComponent} from "./register/register.component";
+import {AdminGuard} from "./admin/admin.guard";
 
 
 const routes: Routes = [
-  {path: 'legumes', component: ListproduitsComponent},
-  {path: 'legumes/ajouter', component: AjouterproduitComponent},
-  {path: 'legumes/update/:id', component: ModidierproduitComponent},
+  {path: 'legumes',canActivate: [AdminGuard], component: ListproduitsComponent},
+  {path: 'legumes/ajouter',canActivate: [AdminGuard], component: AjouterproduitComponent},
+  {path: 'legumes/update/:id', canActivate: [AdminGuard],component: ModidierproduitComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
+  {path: 'register', canActivate: [AdminGuard],component: RegisterComponent},
 
 
-  {path: 'legumes/details/:id', component: DetailsComponent},
+  {path: 'legumes/details/:id',canActivate: [AdminGuard], component: DetailsComponent},
 
-  {path:'', redirectTo: 'legumes', pathMatch:'full'}
+  {path:'', canActivate: [AdminGuard],redirectTo: 'legumes', pathMatch:'full'}
 
 
 

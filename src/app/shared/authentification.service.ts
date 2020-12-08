@@ -11,4 +11,15 @@ export class AuthentificationService {
   adduser(data:any): Observable<any>{
     return this.http.post('http://localhost:3000/user/',data);
   }
+  get isLoggedIn() {
+    return true;
+  }
+  resulte(t)
+  {
+    return t ;
+  }
+
+  get isSuperAdmin() {
+    return true;
+  }
 }

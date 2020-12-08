@@ -11,7 +11,8 @@ export class ListproduitsComponent implements OnInit {
 
   listProducts: legumes[];
   product: legumes;
-
+title;
+legume;
   constructor(private productService: ServiceService) {
 
   }
@@ -23,4 +24,19 @@ export class ListproduitsComponent implements OnInit {
     );
 
   }
+  searchTitle(): void {
+    this.productService.findByTitle(this.title)
+      .subscribe(
+        data => {
+          this.listProducts = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+
+
+
 }

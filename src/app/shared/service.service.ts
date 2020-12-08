@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {legumes} from '../model/legumes/legumes';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {user} from "../model/legumes/user";
 @Injectable({
@@ -18,13 +18,21 @@ export class ServiceService {
   getuser(){
     return this.http.get<user[]>('http://localhost:3000/user/');
   }
+  findByTitle(title: string): Observable<any> {
+    let params1 = new HttpParams().set('title',title);
+    return this.http.get('http://localhost:3000/user/',{params:params1});
+  }
 
   getProductsWS(){
     return this.http.get<legumes[]>('http://localhost:3000/legumes/');
   }
 
+
   addlegumes(data:any): Observable<any>{
     return this.http.post('http://localhost:3000/legumes/',data);
+  }
+  contact(mail:any,subject:any): Observable<any>{
+    return this.http.post('http://localhost:3000/contact/', {mail,subject});
   }
   getlegumesById(id:number){
     return this.http.get<legumes>('http://localhost:3000/legumes/' +id);
