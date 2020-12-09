@@ -15,7 +15,6 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
   modal: any;
-  imgURL = 'https://image.tmdb.org/t/p/w500';
   imgSrc;
   results;
   constructor(private productService: AuthentificationService,private router: Router, private Authentification: AuthentificationService, private formm: FormBuilder) {

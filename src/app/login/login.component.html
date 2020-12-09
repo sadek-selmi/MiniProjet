@@ -24,22 +24,39 @@
             <h2 class="title-4 mb-2">Login</h2>
             <p class="desc-content">Please login using account detail bellow.</p>
           </div>
-          <div class="single-input-item mb-3">
-            <input  [(ngModel)]="mail" type="email" placeholder="Email or Username">
-          </div>
-          <div class="single-input-item mb-3">
-            <input  [(ngModel)]="motdpasse"  type="password" placeholder="Enter your Password">
-          </div>
-          <div class="single-input-item mb-3">
+          <form  [formGroup]="registerForm" (ngSubmit)="login(registerForm.value)">
 
-          <div class="single-input-item mb-3">
-            <button (click)="login(mail,motdpasse)" class="btn obrien-button-2 primary-color">Login</button>
-          </div>
-          <div class="single-input-item">
-            <a routerLink="register">Creat Account</a>
-          </div>
+            <div class="single-input-item mb-3">
+              <input type="text" formControlName="mail" class="form-control"  />
+            </div>
+            <div class="alert alert-danger" *ngIf="registerForm.get('mail').errors
+   && registerForm.controls['mail'].touched">
+              <div *ngIf="registerForm.controls['mail'].hasError('required')">
+                Email is a required field
+              </div>
+              <div *ngIf="registerForm.controls['mail'].hasError('email')">
+                Email must be a valid email address
+              </div>
+            </div>
 
-        </div>
+            <div class="single-input-item mb-3">
+              <input formControlName="motdpasse" type="password" placeholder="Enter your Password">
+            </div>
+            <div class="alert alert-danger" *ngIf="registerForm.get('motdpasse').errors
+   && registerForm.controls['motdpasse'].touched">
+              <div *ngIf="registerForm.controls['motdpasse'].hasError('required')">
+                the passowrd is a required field
+              </div>
+              <div *ngIf="registerForm.controls['motdpasse'].hasError('minlength')">
+                the password minlength is 6
+              </div>
+            </div>
+
+            <div class="single-input-item mb-3">
+            <button [disabled]="registerForm.invalid" class="btn obrien-button-2 primary-color">Login</button>
+          </div>
+          </form>
+
       </div>
     </div>
   </div>
