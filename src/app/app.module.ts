@@ -12,8 +12,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DetailsComponent } from './details/details.component';
 import { ModidierproduitComponent } from './modidierproduit/modidierproduit.component';
 import { ContactComponent } from './contact/contact.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { AlertmsgComponent } from './alertmsg/alertmsg.component';
 
 @NgModule({
+
   declarations: [
     AppComponent,
     AjouterproduitComponent,
@@ -22,14 +25,17 @@ import { ContactComponent } from './contact/contact.component';
     RegisterComponent,
     DetailsComponent,
     ModidierproduitComponent,
-    ContactComponent
+    ContactComponent,
+    AlertmsgComponent
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+      SweetAlert2Module.forRoot(),
+
     ],
   providers: [],
   bootstrap: [AppComponent]

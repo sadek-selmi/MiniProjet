@@ -16,7 +16,6 @@
 </head>
 
 <body>
-
 <div class="contact-wrapper">
   <header class="main-header-area">
     <!-- Main Header Area Start -->
@@ -87,12 +86,14 @@
         <div class="col-lg-8 col-xl-5 offset-xl-6 offset-lg-3 col-custom">
           <div class="newsletter-content text-center d-flex flex-column align-items-center justify-content-center h-100">
             <div class="section-content">
+              <button [disabled]="isUnchanged">Disabled Button</button>
+
               <h4 class="title-4 text-uppercase">Need <span>Help</span></h4>
               <p class="desc-content">Call our support 24/7 at +216 21 885 045<br></p>
             </div>
             <div class="newsletter-form-wrap ml-auto mr-auto">
-              <form id="mc-form" class="mc-form d-flex position-relative">
-                <input type="email" id="mc-email" [(ngModel)]="valInput" class="form-control email-box" placeholder="email@example.com" name="EMAIL">
+              <form  class="mc-form d-flex position-relative">
+                <input type="email"  [(ngModel)]="valInput" class="form-control email-box" placeholder="email@example.com" name="EMAIL">
               </form>
               <app-contact [val]="valInput"
                                    (event)="ChangeValue($event)">

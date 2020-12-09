@@ -9,6 +9,7 @@ export class AppComponent {
   title = 'MiniProject';
   valInput: string;
   valOutput: string;
+  isUnchanged = true;
 
   ChangeValue(n: string){
 
