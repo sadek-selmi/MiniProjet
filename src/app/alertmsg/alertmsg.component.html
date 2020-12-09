@@ -1,12 +1,37 @@
-<div class="row">
-  <div class="col-sm-12 btn btn-primary">
-    Angular Sweetalert Demo
-  </div>
-</div>
-<div style="padding: 5px;margin: 5px;">
-  <button class="btn btn-info" style="margin-right: 10px;margin-left: 10px;"(click)="simpleAlert()">Simple Alert</button>
-  <button class="btn btn-success" style="margin-right: 10px;margin-left: 10px;" (click)="alertWithSuccess()">Alert with Success</button>
-  <button class="btn btn-primary" style="margin-right: 10px;margin-left: 10px;" (click)="confirmBox()">Confirm Box</button>
-  <button class="btn btn-danger" style="margin-right: 10px;margin-left: 10px;" (click)="erroalert()">Error Alert</button>
-  <button class="btn btn-warning" style="margin-right: 10px;margin-left: 10px;" (click)="topend()">Top End</button>
-</div>
+
+    <h2>Full Menu Item Search</h2>
+    <input type="string" [(ngModel)]="entreeItem">
+    <button   (click)='fullMenuGet()'>View Menu Item</button>
+      <div>
+        <h1>Full Menu Item </h1>
+      </div>
+      <div>
+        <li *ngFor='let items of FullMenuResults'>
+          <button
+                  (click)='inputFullMenuItem(items.id);fullMenuToggle()'>View
+            Details</button>
+          {{items.id}}
+          {{items.title}}
+        </li>
+      </div>
+          <h1>Recipe</h1>
+
+        <img  src="{{Food.recipe_image}}" alt="Photo">
+          <h2>Ingredients</h2>
+          <ul>
+            <li *ngFor='let ingredient of Food.recipe_ingredients'>
+              {{ingredient.originalString}}
+            </li>
+          </ul>
+          <br>
+          <h2>Instructions</h2>
+          <ul>
+            <li *ngFor='let instruction of Food.recipe_instructions'>
+              {{instruction.step}}
+            </li>
+            <li>
+              Recipe will take a total of {{Food.recipe_cooktime}} minutes to cook.
+            </li>
+          </ul>
+
+
