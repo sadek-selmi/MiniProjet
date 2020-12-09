@@ -72,20 +72,61 @@
             <h2 class="title-4 mb-2">Ajouter Produit</h2>
             <p class="desc-content">Make infomration.</p>
           </div>
-          <form [formGroup]="form" (ngSubmit)="submit(form.value)">
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
 
 
           <div class="single-input-item mb-3">
             <input type="text" formControlName="title" placeholder="title">
           </div>
+            <div class="alert alert-danger" *ngIf="registerForm.get('title').errors
+   && registerForm.controls['title'].touched">
+              <div *ngIf="registerForm.controls['title'].hasError('required')">
+                the title is a required field
+              </div>
+              <div *ngIf="registerForm.controls['title'].hasError('minlength')">
+                the title minlength is 3
+              </div>
+            </div>
           <div class="single-input-item mb-3">
             <input type="number"  formControlName="price" placeholder="price">
           </div>
+            <div class="alert alert-danger" *ngIf="registerForm.get('price').errors
+   && registerForm.controls['price'].touched">
+              <div *ngIf="registerForm.controls['price'].hasError('required')">
+                the price is a required field
+              </div>
+              <div *ngIf="registerForm.controls['price'].hasError('min')">
+                the price minlength is 0
+              </div>
+              <div *ngIf="registerForm.controls['price'].hasError('maxlength')">
+                the price max is 10000
+              </div>
+            </div>
           <div class="single-input-item mb-3">
             <input type="number" formControlName="quantity" placeholder="quantity">
           </div>
+            <div class="alert alert-danger" *ngIf="registerForm.get('quantity').errors
+   && registerForm.controls['quantity'].touched">
+              <div *ngIf="registerForm.controls['quantity'].hasError('required')">
+                the price is a required field
+              </div>
+              <div *ngIf="registerForm.controls['quantity'].hasError('min')">
+                the price minlength is 0
+              </div>
+              <div *ngIf="registerForm.controls['quantity'].hasError('maxlength')">
+                the quantity max is 10000
+              </div>
+            </div>
             <div class="single-input-item mb-3">
               <input type="text" formControlName="description" placeholder="description">
+            </div>
+            <div class="alert alert-danger" *ngIf="registerForm.get('description').errors && registerForm.controls['description'].touched">
+              <div *ngIf="registerForm.controls['description'].hasError('required')">
+                the price is a required field
+              </div>
+              <div *ngIf="registerForm.controls['description'].hasError('minlength')">
+                the price minlength is 6
+              </div>
             </div>
             <div class="form-group">
               <label>image</label>
@@ -93,10 +134,16 @@
             </div>
             <img [src]="imageSrc" *ngIf="imageSrc" style="height: 100px; width:100px">
 
+            <div class="alert alert-danger" *ngIf="registerForm.get('image').errors && registerForm.controls['image'].touched">
+              <div *ngIf="registerForm.controls['image'].hasError('required')">
+                the image is a required field
+              </div>
+
+            </div>
 
 
           <div class="single-input-item mb-3">
-            <button  type="submit" class="btn obrien-button-2 primary-color">Ajouter</button>
+            <button [disabled]="registerForm.invalid"  type="submit" class="btn obrien-button-2 primary-color">Ajouter</button>
           </div>
 
           </form>

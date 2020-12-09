@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ServiceService} from "../shared/service.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-ajouterproduit',
@@ -9,27 +10,27 @@ import {Router} from "@angular/router";
   styleUrls: ['./ajouterproduit.component.scss']
 })
 export class AjouterproduitComponent implements OnInit {
-  form: FormGroup;
+
+  registerForm: FormGroup;
   imageSrc: string;
+  submitted = false;
 
-  constructor(private router: Router, private productService: ServiceService, private formm: FormBuilder) {
-    this.form = this.formm.group({
-
-      title: [null, [Validators.required]],
-      price: [null, [Validators.required]],
-      quantity: [null, [Validators.required]],
-      description: [null, [Validators.required]],
-      image: [null, [Validators.required]],
-      fileSource: new FormControl('', [Validators.required])
-
-
-
-    });
+  constructor(private router: Router, private productService: ServiceService) {
 
 
   }
 
   ngOnInit(): void {
+    this.registerForm = new FormGroup({
+      title: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      description: new FormControl('', [Validators.required, Validators.minLength(3)]),
+
+      price: new FormControl('', [Validators.required, Validators.min(0),Validators.maxLength(100000)]),
+      quantity: new FormControl('', [Validators.required, Validators.min(0),Validators.maxLength(100000)]),
+      image: new FormControl('',  [Validators.required]),
+      fileSource: new FormControl('', [Validators.required])
+
+    });
   }
 
 
@@ -52,7 +53,7 @@ export class AjouterproduitComponent implements OnInit {
         this.imageSrc = reader.result as string;
 
 
-        this.form.patchValue({
+        this.registerForm.patchValue({
 
           fileSource: reader.result
 
@@ -65,12 +66,41 @@ export class AjouterproduitComponent implements OnInit {
     }
 
   }
-  submit(form) {
-    this.productService.addlegumes(form).subscribe(() => {
-      this.router.navigate(['legumes']);
-      console.log("book added succesfully");
+  onSubmit(form){
+    Swal.fire({
+      title: 'Are you sure want to ADD Product?',
+      text: '',
+      icon: 'success',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, confirm it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        this.productService.addlegumes(form).subscribe(() => {
+          this.router.navigate(['legumes']);
 
-    });
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
+
+
+
 
   }
+
+  reset(){
+    this.registerForm.reset();
+  }
+  closeAlert() {
+    this.router.navigate(['legumes']);
+
+  }
+
+
 }
