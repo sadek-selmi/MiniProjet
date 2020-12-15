@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {legumes} from "../model/legumes/legumes";
+import {legumes} from "../model/legumes";
 import {ServiceService} from "../shared/service.service";
 
 @Component({
@@ -13,6 +13,7 @@ export class ListproduitsComponent implements OnInit {
   product: legumes;
 title;
 legume;
+
   constructor(private productService: ServiceService) {
 
   }

@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
       motdpasse: new FormControl('',  [Validators.required, Validators.minLength(6)]),
       lastName: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
       address: new FormGroup({
-        street: new FormControl('123', Validators.required),
+        street: new FormControl('', Validators.required),
         city: new FormControl()
       })
     });

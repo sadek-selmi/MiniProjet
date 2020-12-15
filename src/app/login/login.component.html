@@ -27,7 +27,7 @@
           <form  [formGroup]="registerForm" (ngSubmit)="login(registerForm.value)">
 
             <div class="single-input-item mb-3">
-              <input type="text" formControlName="mail" class="form-control"  />
+              <input type="text" placeholder="Email" formControlName="mail" class="form-control"  />
             </div>
             <div class="alert alert-danger" *ngIf="registerForm.get('mail').errors
    && registerForm.controls['mail'].touched">

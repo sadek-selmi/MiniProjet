@@ -8,6 +8,7 @@ import {LoginComponent} from "./login/login.component";
 import {ModidierproduitComponent} from "./modidierproduit/modidierproduit.component";
 import {RegisterComponent} from "./register/register.component";
 import {AdminGuard} from "./admin/admin.guard";
+import {ApirecipeComponent} from "./apirecipe/apirecipe.component";
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', canActivate: [AdminGuard],component: RegisterComponent},
 
+  {path: 'recette',canActivate: [AdminGuard], component: ApirecipeComponent},
 
   {path: 'legumes/details/:id',canActivate: [AdminGuard], component: DetailsComponent},
 

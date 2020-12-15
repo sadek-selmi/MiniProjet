@@ -17,63 +17,7 @@
 
 <body>
 <div class="contact-wrapper">
-  <header class="main-header-area">
-    <!-- Main Header Area Start -->
-    <div class="main-header">
-      <div class="container container-default custom-area">
-        <div class="row">
-          <div class="col-lg-12 col-custom">
-            <div class="row align-items-center">
-              <div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
-                <div class="header-logo d-flex align-items-center">
-                  <a href="index.html">
-                    <img class="img-full" src="assets/images/logo/logo.png" alt="Header Logo">
-                  </a>
-                </div>
-              </div>
-              <div class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
-                <nav class="main-nav d-flex justify-content-center">
-                  <ul class="nav">
-                    <li>
-                      <a routerLink="legumes">
-                        <span class="menu-text"> Home</span>
-                        <i class="fa fa-angle-down"></i>
-                      </a>
-
-                    </li>
-                    <li>
-                      <a routerLink="legumes/ajouter">
-                        <span class="menu-text">Add</span>
-                        <i class="fa fa-angle-down"></i>
-                      </a>
-
-                    </li>
-
-                    <li >
-                      <a routerLink="login">
-                        <span class="menu-text">Login</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a routerLink="register">
-                        <span class="menu-text">Register</span>
-                      </a>
-                    </li>
-
-                  </ul>
-                </nav>
-
-              </div>
-
-
-
-
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div></header>
+ <app-nav-bar></app-nav-bar>
 
   <div class="container">
     <router-outlet></router-outlet>

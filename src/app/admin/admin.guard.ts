@@ -3,23 +3,19 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, UrlTr
 import { Observable } from 'rxjs';
 import {AuthentificationService} from "../shared/authentification.service";
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AdminGuard implements CanActivate {
-  constructor(private authService: AuthentificationService, private router: Router)
-  {}
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean | UrlTree {
-    if(this.authService.resulte){
+
+constructor(private authService: AuthentificationService, private router: Router)
+{}
+  canActivate() {
+    if (this.authService.loggedUser) {
       return true;
-      return this.router.parseUrl("legumes");
-
+    } else {
+      return false;
     }
-    else{
-      return this.router.parseUrl("login");
-    }
-
   }
 }

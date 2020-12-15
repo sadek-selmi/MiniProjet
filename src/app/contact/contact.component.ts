@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {ServiceService} from "../shared/service.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-contact',
@@ -36,12 +37,32 @@ submi(subject){
 console.log("jejjejej",this.val);
   console.log("subjeeeeee",subject);
 
-  this.productService.contact(this.val,subject).subscribe(() => {
-    console.log("book added succesfully");
-
-  });
 
 
+
+
+
+
+
+
+
+
+  Swal.fire({
+    title: 'Thnx  ',
+    text: '',
+    icon: 'success',
+
+    confirmButtonText: 'skip'
+
+  }).then((result) => {
+    if (result.value) {
+
+      this.productService.contact(this.val,subject).subscribe(() => {
+        console.log("book added succesfully");
+      });
+
+      }
+    })
 
 
 }

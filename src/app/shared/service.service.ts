@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {legumes} from '../model/legumes/legumes';
+import {legumes} from '../model/legumes';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from "rxjs";
-import {user} from "../model/legumes/user";
+import {user} from "../model/user";
 @Injectable({
   providedIn: 'root'
 })

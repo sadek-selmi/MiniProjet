@@ -1,0 +1,122 @@
+<div class="breadcrumbs-area position-relative">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <div class="breadcrumb-content position-relative section-content">
+          <h3 class="title-3">Recipe</h3>
+          <ul>
+            <li><a routerLink="legumes" href="index.html">Home</a></li>
+            <li>Recipe</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="blog-wrapper" >
+
+  <div class="blog-main-area">
+    <div class="container container-default custom-area">
+      <div class="row flex-row-reverse">
+        <div class="col-lg-9 col-12 col-custom widget-mt" *ngIf="isE == true">
+          <!-- Blog Wrapper Start -->
+          <div class="row">
+            <div class="col-md-6 col-custom mb-4">
+              <div class="single-blog">
+                <div class="single-blog-thumb">
+                  <a href="blog.html">
+                    <img src="{{Food.recipe_image}}" alt="Blog Image">
+                  </a>
+                </div>
+
+                <h3>Ingredients</h3>
+
+
+
+                <ul>
+                  <li *ngFor='let ingredient of Food.recipe_ingredients'>
+                    {{ingredient.originalString}}
+                  </li>
+                </ul>
+
+                <h3>Instructions</h3>
+
+                s                      <ul>
+                <li *ngFor='let instruction of Food.recipe_instructions'>
+                  <p > {{instruction.step}}</p>
+                </li>
+                <li>
+                  <p class="desc-content"> Recipe will take a total of {{Food.recipe_cooktime}} minutes to cook.</p>
+                </li>
+              </ul>
+              </div>
+            </div>
+
+
+
+          </div>
+          <!-- Blog Wrapper End -->
+          <!-- Bottom Toolbar Start -->
+
+          <!-- Bottom Toolbar End -->
+        </div>
+
+
+        <div class="col-lg-3 col-12 col-custom">
+          <!-- Sidebar Widget Start -->
+
+          <aside class="sidebar_widget mt-no-text">
+            <div class="widget_inner">
+              <div class="widget-list widget-mb-1">
+                <h3 class="widget-title">Search</h3>
+                <div class="search-box">
+                  <div class="input-group">
+                    <input placeholder="Recipe" type="string" [(ngModel)]="entreeItem">
+                    <div class="input-group-append">
+                      <button (click)='fullMenuGet()'   type="button">
+                        Search                            </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="widget-list widget-mb-3">
+              <h3 class="widget-title">Menu Categories</h3>
+              <!-- Widget Menu Start -->
+              <nav *ngIf="isEd == true">
+                <ul class="mobile-menu p-0 m-0">
+                  <li class="menu-item-has-children" >
+                    <ul class="dropdown" *ngFor='let items of FullMenuResults'>
+                      <li><button  (click)='inputFullMenuItem(items.id);fullMenuToggle()'>Details</button> | {{items.title}}</li>
+
+                    </ul>
+                  </li>
+
+                </ul>
+              </nav>
+              <!-- Widget Menu End -->
+            </div>
+          </aside>
+          <!-- Sidebar Widget End -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Blog Main Area End Here -->
+
+</div>
+
+
+
+
+

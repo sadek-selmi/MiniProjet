@@ -13,7 +13,8 @@ import { DetailsComponent } from './details/details.component';
 import { ModidierproduitComponent } from './modidierproduit/modidierproduit.component';
 import { ContactComponent } from './contact/contact.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { AlertmsgComponent } from './alertmsg/alertmsg.component';
+import { ApirecipeComponent } from './apirecipe/apirecipe.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
 
@@ -26,7 +27,8 @@ import { AlertmsgComponent } from './alertmsg/alertmsg.component';
     DetailsComponent,
     ModidierproduitComponent,
     ContactComponent,
-    AlertmsgComponent
+    ApirecipeComponent,
+    NavBarComponent
   ],
     imports: [
         BrowserModule,
